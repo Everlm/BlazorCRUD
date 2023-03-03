@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlazorCrud.Server.Models
+namespace BlazorCrud.Server.Entities
 {
     public partial class Departament
     {

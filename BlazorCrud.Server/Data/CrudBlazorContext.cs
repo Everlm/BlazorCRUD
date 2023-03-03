@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using BlazorCrud.Server.Models;
+﻿using BlazorCrud.Server.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BlazorCrud.Server.Data
 {

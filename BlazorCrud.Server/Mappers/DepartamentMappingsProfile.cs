@@ -1,5 +1,5 @@
-﻿using BlazorCrud.Server.Models;
-using AutoMapper;
+﻿using AutoMapper;
+using BlazorCrud.Server.Entities;
 using BlazorCrud.Shared.Dtos.Departament.Response;
 
 namespace BlazorCrud.Server.Mappers
@@ -8,7 +8,8 @@ namespace BlazorCrud.Server.Mappers
     {
         public DepartamentMappingsProfile()
         {
-            CreateMap<Departament, DepartamentResponseDto>();
+            CreateMap<Departament, DepartamentResponseDto>()
+                .ReverseMap();
         }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using BlazorCrud.Server.Data;
-using BlazorCrud.Server.Models;
+using BlazorCrud.Server.Entities;
 using BlazorCrud.Server.Utilities.Static;
 using BlazorCrud.Shared.Commons.Base;
-using BlazorCrud.Shared.Dtos.Departament.Response;
 using BlazorCrud.Shared.Dtos.Employee.Request;
 using BlazorCrud.Shared.Dtos.Employee.Response;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -63,7 +61,7 @@ namespace BlazorCrud.Server.Controllers
 
             try
             {
-                var employees = await _context.Employees.AsNoTracking().FirstOrDefaultAsync(x => x.EmployeeId.Equals(id));
+                var employees = await _context.Employees.AsNoTracking().Include(x=>x.Departament).FirstOrDefaultAsync(x => x.EmployeeId.Equals(id));
 
 
                 if (employees is not null)
@@ -89,7 +87,7 @@ namespace BlazorCrud.Server.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> RegisterEmployee([FromForm] EmployeeRequestDto requestDto)
+        public async Task<IActionResult> RegisterEmployee(EmployeeRequestDto requestDto)
         {
             var response = new BaseResponse<int>();
 
